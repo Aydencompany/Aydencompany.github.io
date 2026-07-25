@@ -256,26 +256,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="proof-section" aria-labelledby="proof-title">
-        <div className="section-number">02</div>
-        <div className="proof-heading">
-          <p className="section-kicker">FIELD EXPERIENCE</p>
-          <h2 id="proof-title">다양한 업무 현장에서 검증된 실무 교육</h2>
-        </div>
-        <div className="proof-copy">
-          <p>
-            금융·제조 기업, 공공기관, 교육청, 대학과 학교 등 다양한 조직의
-            직무와 업무 환경에 맞춘 AI 교육을 진행합니다.
-          </p>
-          <div className="field-tags" aria-label="주요 교육 현장">
-            <span>금융</span>
-            <span>제조</span>
-            <span>공공·행정</span>
-            <span>교육</span>
-          </div>
-        </div>
-      </section>
-
       <section className="section education-section" id="education">
         <div className="section-heading">
           <div>
