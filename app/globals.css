@@ -1377,7 +1377,7 @@ footer p:last-child {
   }
 }
 
-@media (min-width: 1101px) and (min-height: 720px) {
+@media (min-width: 1101px) and (min-height: 600px) {
   html {
     scroll-padding-top: 0;
     scroll-snap-type: y mandatory;
@@ -1509,6 +1509,255 @@ footer p:last-child {
 
   .contact-section {
     min-height: calc(100svh - 112px);
+  }
+}
+
+@media (min-width: 1101px) and (min-height: 600px) and (max-height: 800px) {
+  body {
+    font-size: 15px;
+  }
+
+  .site-header {
+    height: 74px;
+  }
+
+  .brand {
+    font-size: 21px;
+  }
+
+  .desktop-nav,
+  .header-inquiry {
+    font-size: 12px;
+  }
+
+  .hero,
+  .hero-grid {
+    min-height: 100svh;
+  }
+
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.6fr);
+    gap: clamp(40px, 6vw, 90px);
+    padding-top: 88px;
+    padding-bottom: 48px;
+  }
+
+  .hero h1 {
+    max-width: 660px;
+    margin-top: 20px;
+    font-size: clamp(42px, 4.15vw, 56px);
+  }
+
+  .hero-description {
+    max-width: 540px;
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .hero-actions {
+    margin-top: 26px;
+  }
+
+  .primary-button,
+  .contact-button,
+  .form-submit {
+    min-height: 46px;
+  }
+
+  .instructor-line {
+    margin-top: 26px;
+    font-size: 12px;
+  }
+
+  .instructor-line strong {
+    font-size: 15px;
+  }
+
+  .hero-visual {
+    width: min(100%, 260px);
+  }
+
+  .hero-index {
+    bottom: 16px;
+  }
+
+  .section {
+    height: 100svh;
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  .section-heading {
+    gap: 56px;
+    margin-bottom: 24px;
+  }
+
+  .section-heading h2,
+  .method-copy h2,
+  .about-intro h2 {
+    font-size: clamp(32px, 3.3vw, 44px);
+  }
+
+  .section-heading > p,
+  .method-intro,
+  .about-bio > p,
+  .contact-content > p:not(.section-kicker) {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .education-card,
+  .education-card.featured {
+    min-height: clamp(300px, 44vh, 330px);
+    padding: 20px;
+  }
+
+  .education-card h3 {
+    margin-top: 26px;
+    font-size: clamp(18px, 1.55vw, 21px);
+  }
+
+  .education-card p {
+    margin-top: 13px;
+    font-size: 14px;
+    line-height: 1.62;
+  }
+
+  .education-card .tool-tags {
+    padding-top: 14px;
+  }
+
+  .tool-tags span {
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+
+  .program-row {
+    min-height: clamp(116px, 16vh, 132px);
+  }
+
+  .program-row h3 {
+    font-size: 23px;
+  }
+
+  .program-row > p {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .program-target strong,
+  .program-note {
+    font-size: 12px;
+  }
+
+  .program-note {
+    margin-top: 18px;
+  }
+
+  .method-grid {
+    grid-template-columns: minmax(330px, 0.78fr) minmax(460px, 1.22fr);
+    gap: clamp(46px, 6vw, 80px);
+  }
+
+  .method-intro {
+    margin-top: 16px;
+  }
+
+  .method-list {
+    margin-top: 20px;
+  }
+
+  .method-list article {
+    padding: 11px 0;
+  }
+
+  .method-list h3 {
+    font-size: 16px;
+  }
+
+  .method-list p {
+    margin-top: 4px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .gallery-main {
+    height: clamp(240px, 36vh, 270px);
+    min-height: 0 !important;
+  }
+
+  .gallery figure:not(.gallery-main) {
+    height: clamp(115px, 18vh, 135px);
+    min-height: 0;
+  }
+
+  .about-intro {
+    gap: 48px;
+    padding-bottom: 20px;
+  }
+
+  .about-bio > p {
+    margin-top: 14px;
+  }
+
+  .expertise-grid {
+    margin-top: 20px;
+  }
+
+  .expertise-card {
+    min-height: 178px;
+    padding: 18px;
+  }
+
+  .expertise-card h3 {
+    margin-top: 14px;
+    font-size: 20px;
+  }
+
+  .expertise-card ul {
+    gap: 4px;
+    margin-top: 11px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .research-band {
+    margin-top: 12px;
+  }
+
+  .research-band > div {
+    min-height: 105px;
+    padding: 15px 20px;
+  }
+
+  .research-band strong {
+    margin-top: 9px;
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  .research-band p {
+    margin-top: 5px;
+    font-size: 11px;
+  }
+
+  .contact-section {
+    min-height: calc(100svh - 88px);
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .contact-content h2 {
+    font-size: clamp(36px, 4.2vw, 54px);
+  }
+
+  .contact-button {
+    margin-top: 28px;
+  }
+
+  footer {
+    min-height: 88px;
   }
 }
 
