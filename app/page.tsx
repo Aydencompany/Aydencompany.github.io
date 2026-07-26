@@ -425,7 +425,7 @@ export default function Home() {
           <div className="desktop-hero-visual">
             <img
               className="desktop-hero-image"
-              src="./mobile/hero-main.webp"
+              src="./mobile/hero-person-transparent.webp"
               alt="AI 실무 교육 강사 유재형"
             />
             <span className="desktop-tool desktop-tool-chatgpt">

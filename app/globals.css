@@ -973,7 +973,12 @@ img {
     min-height: 760px;
     overflow: hidden;
     background:
-      radial-gradient(circle at 68% 54%, rgba(197, 255, 0, 0.1), transparent 34%),
+      radial-gradient(
+        circle at 52% 74%,
+        rgba(83, 178, 65, 0.32),
+        transparent 38%
+      ),
+      radial-gradient(circle at 68% 54%, rgba(197, 255, 0, 0.08), transparent 34%),
       #0b503e;
   }
 
@@ -1005,11 +1010,13 @@ img {
 
   .desktop-hero-image {
     position: absolute;
+    z-index: 1;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: contain;
-    object-position: center;
+    object-position: center bottom;
+    filter: drop-shadow(0 22px 28px rgba(0, 33, 24, 0.18));
   }
 
   .desktop-tool {
