@@ -1215,8 +1215,8 @@ img {
   }
 
   .desktop-program-image {
-    position: relative;
-    height: 250px;
+    aspect-ratio: 1260 / 852;
+    height: auto;
     overflow: hidden;
     border-radius: 14px;
     background: #eef0ed;
@@ -1226,33 +1226,6 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 300ms ease;
-  }
-
-  .desktop-program-card:hover .desktop-program-image img {
-    transform: scale(1.025);
-  }
-
-  .desktop-program-card:nth-child(3) .desktop-program-image::before {
-    position: absolute;
-    z-index: 0;
-    inset: -18px;
-    background:
-      linear-gradient(rgba(0, 64, 48, 0.2), rgba(0, 64, 48, 0.2)),
-      url("/mobile/program-practice.webp") center / cover no-repeat;
-    content: "";
-    filter: blur(16px);
-    transform: scale(1.08);
-  }
-
-  .desktop-program-card:nth-child(3) .desktop-program-image img {
-    position: relative;
-    z-index: 1;
-    object-fit: contain;
-  }
-
-  .desktop-program-card:nth-child(3):hover .desktop-program-image img {
-    transform: none;
   }
 
   .desktop-program-number {
