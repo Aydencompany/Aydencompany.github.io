@@ -60,15 +60,22 @@ img {
 }
 
 .mobile-page {
-  width: min(100%, 375px);
+  width: 100%;
+  max-width: 430px;
   margin: auto;
   overflow: hidden;
   background: var(--white);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.title-line {
+  display: block;
 }
 
 .mobile-hero {
   position: relative;
-  height: 812px;
+  height: clamp(812px, 216.54vw, 931px);
   overflow: hidden;
   padding: 55px 30px;
   background: var(--green);
@@ -82,7 +89,7 @@ img {
 
 .mobile-hero h1 {
   margin: 0 0 13px;
-  font-size: 28px;
+  font-size: clamp(26px, 7.47vw, 28px);
   font-weight: 700;
   line-height: 38px;
 }
@@ -92,6 +99,7 @@ img {
   color: rgba(255, 255, 255, 0.8);
   font-size: 14px;
   line-height: 22px;
+  text-wrap: pretty;
 }
 
 .hero-tags {
@@ -117,7 +125,7 @@ img {
 .hero-art {
   position: absolute;
   inset: 0;
-  height: 812px;
+  height: clamp(812px, 216.54vw, 931px);
   overflow: hidden;
 }
 
@@ -154,15 +162,15 @@ img {
 }
 
 .floating-icon-chatgpt {
-  top: 469px;
-  left: 46px;
+  top: clamp(469px, 125.07vw, 538px);
+  left: clamp(39px, 12.27vw, 53px);
   --duration: 3.6s;
   --angle: -7deg;
 }
 
 .floating-icon-claude {
-  top: 627px;
-  left: 27px;
+  top: clamp(627px, 167.2vw, 719px);
+  left: clamp(24px, 7.2vw, 31px);
   --float-y: -10px;
   --duration: 4.2s;
   --delay: -1.4s;
@@ -170,8 +178,8 @@ img {
 }
 
 .floating-icon-gemini {
-  top: 499px;
-  right: 42px;
+  top: clamp(499px, 133.07vw, 572px);
+  right: clamp(36px, 11.2vw, 48px);
   --float-y: -7px;
   --duration: 3.9s;
   --delay: -2.2s;
@@ -262,7 +270,7 @@ img {
 }
 
 .course-card {
-  height: 206px;
+  min-height: 206px;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 12px;
@@ -309,6 +317,7 @@ img {
   color: var(--gray);
   font-size: 14px;
   line-height: 22px;
+  text-wrap: pretty;
 }
 
 .course-card-docs {
@@ -403,7 +412,7 @@ img {
 }
 
 .patent {
-  height: 114px;
+  min-height: 114px;
   background: var(--green);
   color: var(--white);
 }
@@ -437,7 +446,7 @@ img {
 }
 
 .mobile-contact {
-  height: 352px;
+  min-height: 352px;
   padding: 54px 30px;
   background: var(--green);
   color: var(--white);
@@ -446,7 +455,7 @@ img {
 
 .mobile-contact h2 {
   margin: 0 0 17px;
-  font-size: 28px;
+  font-size: clamp(24px, 7.47vw, 28px);
   line-height: 38px;
 }
 
@@ -455,6 +464,7 @@ img {
   color: rgba(255, 255, 255, 0.8);
   font-size: 14px;
   line-height: 22px;
+  text-wrap: pretty;
 }
 
 .reveal {
@@ -716,7 +726,7 @@ img {
   }
 }
 
-@media (min-width: 376px) {
+@media (min-width: 431px) {
   .mobile-page {
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
   }

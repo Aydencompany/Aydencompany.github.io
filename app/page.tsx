@@ -8,64 +8,39 @@ const courses = [
     alt: "생성형 AI 업무 화면",
     badge: "핵심 01",
     title: "생성형 AI 업무 활용",
-    description: (
-      <>
-        보고서 작성, 자료 조사, 요약, 기획과 아이디어 도출 등
-        <br />
-        일상적인 업무에 생성형 AI를 적용합니다.
-      </>
-    ),
+    description:
+      "보고서 작성, 자료 조사, 요약, 기획과 아이디어 도출 등 일상적인 업무에 생성형 AI를 적용합니다.",
   },
   {
     image: "./mobile/course-data.webp",
     alt: "AI 데이터 분석 화면",
     badge: "핵심 02",
     title: "AI·데이터 분석",
-    description: (
-      <>
-        Excel·AI 데이터 분석부터 Python 처리까지
-        <br />
-        직무별로 교육합니다.
-      </>
-    ),
+    description:
+      "Excel·AI 데이터 분석부터 Python 처리까지 직무별로 교육합니다.",
   },
   {
     image: "./mobile/course-docs.webp",
     alt: "AI 문서 활용 화면",
     title: "AI 기반 문서·자료 활용",
     variant: "docs",
-    description: (
-      <>
-        내부 자료 분석, 핵심 정보 추출, 문서 비교와 업무
-        <br />
-        목적에 맞는 콘텐츠 생성을 다룹니다.
-      </>
-    ),
+    description:
+      "내부 자료 분석, 핵심 정보 추출, 문서 비교와 업무 목적에 맞는 콘텐츠 생성을 다룹니다.",
   },
   {
     image: "./mobile/course-automation.webp",
     alt: "프롬프트 자동화 화면",
     title: "프롬프트 설계 및 업무 자동화",
     variant: "automation",
-    description: (
-      <>
-        원하는 결과를 얻기 위한 프롬프트 구조와 반복 업무를
-        <br />
-        효율적으로 처리하는 활용 방법을 학습합니다.
-      </>
-    ),
+    description:
+      "원하는 결과를 얻기 위한 프롬프트 구조와 반복 업무를 효율적으로 처리하는 활용 방법을 학습합니다.",
   },
   {
     image: "./mobile/course-vibe.webp",
     alt: "바이브 코딩 화면",
     title: "바이브 코딩",
-    description: (
-      <>
-        개발 경험이 없는 실무자도 생성형 AI를 활용해
-        <br />
-        간단한 웹페이지와 업무 도구를 제작할 수 있습니다.
-      </>
-    ),
+    description:
+      "개발 경험이 없는 실무자도 생성형 AI를 활용해 간단한 웹페이지와 업무 도구를 제작할 수 있습니다.",
   },
 ];
 
@@ -75,39 +50,24 @@ const programs = [
     title: "직무 맞춤형 설계",
     image: "./mobile/program-custom.webp",
     alt: "직무 맞춤형 교육 자료",
-    description: (
-      <>
-        교육 대상, 담당 업무, 활용 목적과 숙련도를 고려해
-        <br />
-        교육 내용과 난이도를 구성합니다.
-      </>
-    ),
+    description:
+      "교육 대상, 담당 업무, 활용 목적과 숙련도를 고려해 교육 내용과 난이도를 구성합니다.",
   },
   {
     badge: "핵심 02",
     title: "실제 업무 사례 중심",
     image: "./mobile/program-case.webp",
     alt: "현장 강의 모습",
-    description: (
-      <>
-        문서 작성, 자료 조사, 데이터 분석 등 현장에서 자주 접하는
-        <br />
-        업무를 중심으로 설명합니다.
-      </>
-    ),
+    description:
+      "문서 작성, 자료 조사, 데이터 분석 등 현장에서 자주 접하는 업무를 중심으로 설명합니다.",
   },
   {
     badge: "핵심 03",
     title: "참여형 실습",
     image: "./mobile/program-practice.webp",
     alt: "참여형 실습 모습",
-    description: (
-      <>
-        설명을 듣는 데서 끝나지 않고 직접 프롬프트를 작성하고
-        <br />
-        결과물을 만들어봅니다.
-      </>
-    ),
+    description:
+      "설명을 듣는 데서 끝나지 않고 직접 프롬프트를 작성하고 결과물을 만들어봅니다.",
   },
 ];
 
@@ -279,16 +239,13 @@ export default function Home() {
         <section className="mobile-hero">
           <div className="hero-copy reveal">
             <h1>
-              생성형 AI를
-              <br />
-              실제 업무의 변화로
-              <br />
-              연결합니다.
+              <span className="title-line">생성형 AI를</span>
+              <span className="title-line">실제 업무의 변화로</span>
+              <span className="title-line">연결합니다.</span>
             </h1>
             <p>
-              교육 대상의 직무와 실제 업무 환경을 분석하여
-              <br />
-              현장에서 바로 활용할 수 있는 AI 데이터 교육을 설계합니다.
+              교육 대상의 직무와 실제 업무 환경을 분석하여 현장에서 바로
+              활용할 수 있는 AI 데이터 교육을 설계합니다.
             </p>
           </div>
 
@@ -368,24 +325,19 @@ export default function Home() {
 
         <section id="profile" className="mobile-section profile-section">
           <h2 className="reveal">
-            연구부터 현장 적용까지
-            <br />
-            경험한 실무형 강사
+            <span className="title-line">연구부터 현장 적용까지</span>
+            <span className="title-line">경험한 실무형 강사</span>
           </h2>
           <div className="profile-list">
             <article className="patent reveal">
               <h3>
-                거대언어모델을 이용한 언어재활 업무지원
-                <br />
-                방법 및 시스템
+                거대언어모델을 이용한 언어재활 업무지원 방법 및 시스템
               </h3>
               <p>특허 제10-2915253호·공동 발명</p>
             </article>
             <article className="patent reveal">
               <h3>
-                도메인 특화 RAG 기반 언어재활 목표 ·
-                <br />
-                치료계획 생성 연구
+                도메인 특화 RAG 기반 언어재활 목표 · 치료계획 생성 연구
               </h3>
               <p>Expert Systems with Applications 투고 연구 공동저자</p>
             </article>
@@ -405,14 +357,12 @@ export default function Home() {
         <section id="contact" className="mobile-contact">
           <div className="reveal">
             <h2>
-              조직에 필요한 AI 교육을
-              <br />
-              함께 설계합니다
+              <span className="title-line">조직에 필요한 AI 교육을</span>
+              <span className="title-line">함께 설계합니다</span>
             </h2>
             <p>
-              교육 대상과 업무 환경, 원하는 교육 내용을 알려주시면
-              <br />
-              목적에 맞는 프로그램을 제안해 드립니다
+              교육 대상과 업무 환경, 원하는 교육 내용을 알려주시면 목적에
+              맞는 프로그램을 제안해 드립니다
             </p>
           </div>
           <button
