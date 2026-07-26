@@ -2,91 +2,117 @@
 
 import { FormEvent, useEffect, useRef, useState } from "react";
 
-const educationFields = [
+const courses = [
   {
-    number: "01",
+    image: "./mobile/course-generative.webp",
+    alt: "생성형 AI 업무 화면",
+    badge: "핵심 01",
     title: "생성형 AI 업무 활용",
-    description:
-      "보고서 작성, 자료 조사, 요약, 기획과 아이디어 도출 등 일상적인 업무에 생성형 AI를 적용합니다.",
-    tools: ["ChatGPT", "Gemini", "Claude"],
-    featured: true,
+    description: (
+      <>
+        보고서 작성, 자료 조사, 요약, 기획과 아이디어 도출 등
+        <br />
+        일상적인 업무에 생성형 AI를 적용합니다.
+      </>
+    ),
   },
   {
-    number: "02",
+    image: "./mobile/course-data.webp",
+    alt: "AI 데이터 분석 화면",
+    badge: "핵심 02",
     title: "AI·데이터 분석",
-    description:
-      "Excel과 AI를 활용한 데이터 정리·분석·시각화부터 Python 기반 데이터 처리까지 직무 수준에 맞춰 교육합니다.",
-    tools: ["Excel", "Python", "Google Colab"],
-    featured: true,
+    description: (
+      <>
+        Excel·AI 데이터 분석부터 Python 처리까지
+        <br />
+        직무별로 교육합니다.
+      </>
+    ),
   },
   {
-    number: "03",
+    image: "./mobile/course-docs.webp",
+    alt: "AI 문서 활용 화면",
     title: "AI 기반 문서·자료 활용",
-    description:
-      "내부 자료 분석, 핵심 정보 추출, 문서 비교와 업무 목적에 맞는 콘텐츠 생성을 다룹니다.",
-    tools: ["Google AI", "생성형 AI"],
+    variant: "docs",
+    description: (
+      <>
+        내부 자료 분석, 핵심 정보 추출, 문서 비교와 업무
+        <br />
+        목적에 맞는 콘텐츠 생성을 다룹니다.
+      </>
+    ),
   },
   {
-    number: "04",
+    image: "./mobile/course-automation.webp",
+    alt: "프롬프트 자동화 화면",
     title: "프롬프트 설계 및 업무 자동화",
-    description:
-      "원하는 결과를 얻기 위한 프롬프트 구조와 반복 업무를 효율적으로 처리하는 활용 방법을 학습합니다.",
-    tools: ["프롬프트 설계", "업무 프로세스 개선"],
+    variant: "automation",
+    description: (
+      <>
+        원하는 결과를 얻기 위한 프롬프트 구조와 반복 업무를
+        <br />
+        효율적으로 처리하는 활용 방법을 학습합니다.
+      </>
+    ),
   },
   {
-    number: "05",
+    image: "./mobile/course-vibe.webp",
+    alt: "바이브 코딩 화면",
     title: "바이브 코딩",
-    description:
-      "개발 경험이 없는 실무자도 생성형 AI를 활용해 간단한 웹페이지와 업무 도구를 제작할 수 있도록 교육합니다.",
-    tools: ["AI 코딩", "웹 도구 제작"],
+    description: (
+      <>
+        개발 경험이 없는 실무자도 생성형 AI를 활용해
+        <br />
+        간단한 웹페이지와 업무 도구를 제작할 수 있습니다.
+      </>
+    ),
   },
 ];
 
 const programs = [
   {
-    label: "BUSINESS",
-    title: "기업·산업 현장",
-    description:
-      "보고서와 기획안 작성, 시장·자료 조사, 데이터 분석, 반복 업무 개선 등 실무자의 생산성 향상에 초점을 맞춥니다.",
-    targets: "사무·기획 · 영업 · 관리 · 데이터 실무자",
-  },
-  {
-    label: "PUBLIC",
-    title: "공공·행정 현장",
-    description:
-      "행정문서 작성, 정책자료 조사, 데이터 정리·분석 등 공공업무에 적용할 수 있는 생성형 AI 활용 방법을 다룹니다.",
-    targets: "공무원 · 공공기관 실무자 · 행정 담당자",
-  },
-  {
-    label: "EDUCATION",
-    title: "학교·교육 현장",
-    description:
-      "수업 및 교육자료 제작, 자료 조사, 문서 업무, Google AI 활용 등 교직원의 교육·행정 업무를 중심으로 구성합니다.",
-    targets: "교직원 · 대학생 · 교육 관계자",
-  },
-];
-
-const methods = [
-  {
-    number: "01",
+    badge: "핵심 01",
     title: "직무 맞춤형 설계",
-    text: "교육 대상, 담당 업무, 활용 목적과 숙련도를 고려해 교육 내용과 난이도를 구성합니다.",
+    image: "./mobile/program-custom.webp",
+    alt: "직무 맞춤형 교육 자료",
+    description: (
+      <>
+        교육 대상, 담당 업무, 활용 목적과 숙련도를 고려해
+        <br />
+        교육 내용과 난이도를 구성합니다.
+      </>
+    ),
   },
   {
-    number: "02",
+    badge: "핵심 02",
     title: "실제 업무 사례 중심",
-    text: "문서 작성, 자료 조사, 데이터 분석 등 현장에서 자주 접하는 업무를 중심으로 설명합니다.",
+    image: "./mobile/program-case.webp",
+    alt: "현장 강의 모습",
+    description: (
+      <>
+        문서 작성, 자료 조사, 데이터 분석 등 현장에서 자주 접하는
+        <br />
+        업무를 중심으로 설명합니다.
+      </>
+    ),
   },
   {
-    number: "03",
+    badge: "핵심 03",
     title: "참여형 실습",
-    text: "설명을 듣는 데서 끝나지 않고 직접 프롬프트를 작성하고 결과물을 만들어봅니다.",
+    image: "./mobile/program-practice.webp",
+    alt: "참여형 실습 모습",
+    description: (
+      <>
+        설명을 듣는 데서 끝나지 않고 직접 프롬프트를 작성하고
+        <br />
+        결과물을 만들어봅니다.
+      </>
+    ),
   },
 ];
 
-const expertise = [
+const profileCards = [
   {
-    label: "AI EDUCATION",
     title: "교육 및 현장 적용",
     items: [
       "조직과 직무에 맞춘 실습형 커리큘럼 설계",
@@ -95,7 +121,6 @@ const expertise = [
     ],
   },
   {
-    label: "R&D",
     title: "연구 및 기술 개발",
     items: [
       "도메인 특화 RAG 시스템 연구 참여",
@@ -104,10 +129,9 @@ const expertise = [
     ],
   },
   {
-    label: "BACKGROUND",
     title: "전문 배경 및 자격",
     items: [
-      "언어치료학 석사 · 언어재활사 1급",
+      "언어치료학 석사·언어재활사 1급",
       "직업상담사 2급",
       "언어재활 및 교육·의료 분야 현장 경험",
     ],
@@ -127,13 +151,41 @@ export default function Home() {
   const openedAt = useRef(Date.now());
 
   useEffect(() => {
+    const items = document.querySelectorAll<HTMLElement>(".reveal");
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (reducedMotion || !("IntersectionObserver" in window)) {
+      items.forEach((item) => item.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -32px" },
+    );
+
+    items.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
     if (!isInquiryOpen) return;
     openedAt.current = Date.now();
     document.body.classList.add("modal-open");
     closeButtonRef.current?.focus();
+
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") setIsInquiryOpen(false);
     };
+
     window.addEventListener("keydown", closeOnEscape);
     return () => {
       document.body.classList.remove("modal-open");
@@ -149,6 +201,7 @@ export default function Home() {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     if (Date.now() - openedAt.current < 2500) {
       setFormStatus("error");
       setFormMessage("잠시 후 다시 시도해 주세요.");
@@ -206,6 +259,7 @@ export default function Home() {
       if (!response.ok || !wasSuccessful) {
         throw new Error(result.message || "Form submission failed");
       }
+
       form.reset();
       setFormStatus("success");
       setFormMessage(
@@ -220,272 +274,157 @@ export default function Home() {
   };
 
   return (
-    <main>
-      <header className="site-header">
-        <a className="brand" href="#top" aria-label="페이지 처음으로">
-          ROOT<span>.</span>
-        </a>
-        <nav className="desktop-nav" aria-label="주요 메뉴">
-          <a href="#education">교육 분야</a>
-          <a href="#programs">맞춤 프로그램</a>
-          <a href="#about">강사 소개</a>
-        </nav>
-        <button className="header-inquiry" type="button" onClick={openInquiry}>
-          강의 문의
-          <span aria-hidden="true">↗</span>
-        </button>
-      </header>
-
-      <section className="hero" id="top">
-        <div className="hero-grid">
-          <div className="hero-copy">
-            <p className="eyebrow">다양한 조직과 직무를 위한 맞춤형 AI 교육</p>
+    <>
+      <main className="mobile-page">
+        <section className="mobile-hero">
+          <div className="hero-copy reveal">
             <h1>
               생성형 AI를
               <br />
-              <span>실제 업무의 변화</span>로
+              실제 업무의 변화로
               <br />
-              연결합니다
+              연결합니다.
             </h1>
-            <p className="hero-description">
-              교육 대상의 직무와 실제 업무 환경을 분석하여 현장에서 바로
-              활용할 수 있는 AI·데이터 교육을 설계합니다.
+            <p>
+              교육 대상의 직무와 실제 업무 환경을 분석하여
+              <br />
+              현장에서 바로 활용할 수 있는 AI 데이터 교육을 설계합니다.
             </p>
-            <div className="hero-actions">
-              <button className="primary-button" type="button" onClick={openInquiry}>
-                강의 문의하기
-                <span aria-hidden="true">→</span>
-              </button>
-              <a className="text-link" href="#education">
-                교육 분야 살펴보기
-              </a>
-            </div>
-            <div className="instructor-line">
-              <strong>유재형</strong>
-              <span>AI·데이터 업무혁신 강사 · 루트 대표</span>
-            </div>
           </div>
 
-          <div className="hero-visual">
-            <div className="portrait-frame">
-              <img
-                src="./images/profile.webp"
-                alt="AI·데이터 업무혁신 강사 유재형 프로필"
-              />
-              <div className="portrait-label">
-                <span>AI &amp; DATA</span>
-                <strong>JAEHYEONG YU</strong>
-              </div>
-            </div>
-            <div className="hero-note" aria-hidden="true">
-              <span>ROUTE TO</span>
-              <strong>BETTER WORK</strong>
-            </div>
+          <div className="hero-tags reveal reveal-delay-1">
+            <span>생성형 AI 업무 활용</span>
+            <span>AI·데이터 분석</span>
+            <span>바이브 코딩</span>
+            <span>AI 기반 문서·자료 활용</span>
+            <span>프롬프트 설계 및 업무 자동화</span>
           </div>
-        </div>
-        <div className="hero-index" aria-hidden="true">
-          <span>01</span>
-          <div />
-          <span>AI EDUCATION</span>
-        </div>
-      </section>
 
-      <section className="section education-section" id="education">
-        <div className="section-heading">
-          <div>
-            <p className="section-kicker">WHAT I TEACH</p>
-            <h2>업무에 바로 적용하는 AI 교육</h2>
+          <div className="hero-art">
+            <img
+              className="hero-main-image"
+              src="./mobile/hero-main.webp"
+              alt="AI 실무 교육 강사 유재형"
+            />
+            <span className="floating-icon floating-icon-chatgpt">
+              <img src="./mobile/logo-chatgpt.png" alt="" />
+            </span>
+            <span className="floating-icon floating-icon-claude">
+              <img src="./mobile/logo-claude.png" alt="" />
+            </span>
+            <span className="floating-icon floating-icon-gemini">
+              <img src="./mobile/logo-gemini.png" alt="" />
+            </span>
           </div>
-          <p>
-            단순한 기능 소개를 넘어 문서 작성, 데이터 분석, 반복 업무 개선 등
-            실제 직무에 적용할 수 있는 실습형 교육을 제공합니다.
-          </p>
-        </div>
 
-        <div className="education-grid">
-          {educationFields.map((field) => (
-            <article
-              className={`education-card${field.featured ? " featured" : ""}`}
-              key={field.number}
-            >
-              <div className="card-topline">
-                <span>{field.number}</span>
-                {field.featured && <span className="core-label">CORE</span>}
-              </div>
-              <h3>{field.title}</h3>
-              <p>{field.description}</p>
-              <div className="tool-tags">
-                {field.tools.map((tool) => (
-                  <span key={tool}>{tool}</span>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+          <button
+            className="mobile-cta hero-cta reveal"
+            type="button"
+            onClick={openInquiry}
+          >
+            <strong>강의 문의하기</strong>
+            <img src="./mobile/arrow-right.svg" alt="" />
+          </button>
+        </section>
 
-      <section className="section programs-section" id="programs">
-        <div className="section-heading light">
-          <div>
-            <p className="section-kicker">CUSTOM PROGRAM</p>
-            <h2>조직과 직무에 맞춘 교육 프로그램</h2>
+        <section id="courses" className="mobile-section course-section">
+          <h2 className="reveal">업무에 바로 적용하는 AI 교육</h2>
+          <div className="course-list">
+            {courses.map((course) => (
+              <article
+                className={`course-card reveal${
+                  course.variant ? ` course-card-${course.variant}` : ""
+                }`}
+                key={course.title}
+              >
+                <img src={course.image} alt={course.alt} />
+                <div className="card-copy">
+                  <div>
+                    {course.badge && <b>{course.badge}</b>}
+                    <h3>{course.title}</h3>
+                  </div>
+                  <p>{course.description}</p>
+                </div>
+              </article>
+            ))}
           </div>
-          <p>
-            같은 AI 도구라도 조직의 업무 방식과 참여자의 직무에 따라 활용
-            방법은 달라집니다. 실제 업무 사례를 반영해 교육을 구성합니다.
-          </p>
-        </div>
+        </section>
 
-        <div className="program-list">
-          {programs.map((program, index) => (
-            <article className="program-row" key={program.label}>
-              <div className="program-index">0{index + 1}</div>
-              <div>
-                <span className="program-label">{program.label}</span>
+        <section id="programs" className="mobile-section program-section">
+          <h2 className="reveal">조직과 직무에 맞춘 교육 프로그램</h2>
+          {programs.map((program) => (
+            <article className="program reveal" key={program.title}>
+              <div className="program-title">
+                <b>{program.badge}</b>
                 <h3>{program.title}</h3>
               </div>
-              <p>{program.description}</p>
-              <div className="program-target">
-                <span>주요 대상</span>
-                <strong>{program.targets}</strong>
+              <div className="program-image">
+                <img src={program.image} alt={program.alt} />
               </div>
+              <p>{program.description}</p>
             </article>
           ))}
-        </div>
-        <p className="program-note">
-          협회, 전문직 단체 및 기타 조직을 위한 맞춤형 교육도 가능합니다.
-        </p>
-      </section>
+        </section>
 
-      <section className="section method-section" id="method">
-        <div className="method-grid">
-          <div className="method-copy">
-            <p className="section-kicker">HOW I TEACH</p>
-            <h2>현장에서 바로 활용하는 실습 중심 교육</h2>
-            <p className="method-intro">
-              교육 대상의 직무와 AI 활용 수준을 반영해 커리큘럼을 설계하고,
-              실제 업무와 유사한 사례를 중심으로 함께 실습합니다.
-            </p>
-            <div className="method-list">
-              {methods.map((method) => (
-                <article key={method.number}>
-                  <span>{method.number}</span>
-                  <div>
-                    <h3>{method.title}</h3>
-                    <p>{method.text}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-
-          <div className="gallery" aria-label="강의 현장 사진">
-            <figure className="gallery-main">
-              <img
-                src="./images/lecture-classroom.webp"
-                alt="참여자들이 노트북으로 생성형 AI를 실습하는 강의 현장"
-              />
-              <figcaption>생성형 AI 직무 활용 교육</figcaption>
-            </figure>
-            <figure>
-              <img
-                src="./images/lecture-workshop.webp"
-                alt="소규모 그룹으로 진행하는 AI 실습 교육 현장"
-              />
-              <figcaption>참여형 AI 실습</figcaption>
-            </figure>
-            <figure>
-              <img
-                src="./images/lecture-auditorium-1.webp"
-                alt="강당에서 생성형 AI 활용 사례를 설명하는 강의 현장"
-              />
-              <figcaption>업무 사례 중심 강의</figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      <section className="section about-section" id="about">
-        <div className="about-intro">
-          <div>
-            <p className="section-kicker">ABOUT THE INSTRUCTOR</p>
-            <h2>연구부터 현장 적용까지 경험한 실무형 강사</h2>
-          </div>
-          <div className="about-bio">
-            <div className="about-name">
-              <strong>유재형</strong>
-              <span>AI·데이터 업무혁신 강사 · 루트 대표</span>
-            </div>
-            <p>
-              기업, 공공기관, 학교를 대상으로 생성형 AI와 데이터 활용 교육을
-              진행하고 있습니다. AI 서비스의 기획, 연구, 개발 및 사업화
-              경험을 바탕으로 기술의 기능보다 실제 업무에 적용하는 방법을
-              교육합니다.
-            </p>
-          </div>
-        </div>
-
-        <div className="expertise-grid">
-          {expertise.map((item) => (
-            <article className="expertise-card" key={item.label}>
-              <span>{item.label}</span>
-              <h3>{item.title}</h3>
-              <ul>
-                {item.items.map((listItem) => (
-                  <li key={listItem}>{listItem}</li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-
-        <div className="research-band">
-          <div>
-            <span>PATENT</span>
-            <strong>
-              거대언어모델을 이용한 언어재활 업무지원 방법 및 시스템
-            </strong>
-            <p>특허 제10-2915253호 · 공동 발명</p>
-          </div>
-          <div>
-            <span>RESEARCH</span>
-            <strong>도메인 특화 RAG 기반 언어재활 목표·치료계획 생성 연구</strong>
-            <p>
-              <i>Expert Systems with Applications</i> 투고 연구 공동저자
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="contact-section" id="contact">
-        <div className="contact-watermark" aria-hidden="true">
-          ROUTE
-        </div>
-        <div className="contact-content">
-          <p className="section-kicker">LET&apos;S WORK TOGETHER</p>
-          <h2>
-            조직에 필요한 AI 교육을
+        <section id="profile" className="mobile-section profile-section">
+          <h2 className="reveal">
+            연구부터 현장 적용까지
             <br />
-            함께 설계합니다
+            경험한 실무형 강사
           </h2>
-          <p>
-            교육 대상과 업무 환경, 원하는 교육 내용을 알려주시면 목적에 맞는
-            프로그램을 제안해 드립니다.
-          </p>
-          <button className="contact-button" type="button" onClick={openInquiry}>
-            강의 문의하기
-            <span aria-hidden="true">↗</span>
-          </button>
-        </div>
-      </section>
+          <div className="profile-list">
+            <article className="patent reveal">
+              <h3>
+                거대언어모델을 이용한 언어재활 업무지원
+                <br />
+                방법 및 시스템
+              </h3>
+              <p>특허 제10-2915253호·공동 발명</p>
+            </article>
+            <article className="patent reveal">
+              <h3>
+                도메인 특화 RAG 기반 언어재활 목표 ·
+                <br />
+                치료계획 생성 연구
+              </h3>
+              <p>Expert Systems with Applications 투고 연구 공동저자</p>
+            </article>
+            {profileCards.map((card) => (
+              <article className="profile-card reveal" key={card.title}>
+                <h3>{card.title}</h3>
+                <ul>
+                  {card.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </section>
 
-      <footer>
-        <a className="brand footer-brand" href="#top">
-          ROOT<span>.</span>
-        </a>
-        <p>유재형 · AI·데이터 업무혁신 강사</p>
-        <p>© 2026 ROOT. All rights reserved.</p>
-      </footer>
+        <section id="contact" className="mobile-contact">
+          <div className="reveal">
+            <h2>
+              조직에 필요한 AI 교육을
+              <br />
+              함께 설계합니다
+            </h2>
+            <p>
+              교육 대상과 업무 환경, 원하는 교육 내용을 알려주시면
+              <br />
+              목적에 맞는 프로그램을 제안해 드립니다
+            </p>
+          </div>
+          <button
+            className="mobile-cta reveal"
+            type="button"
+            onClick={openInquiry}
+          >
+            <strong>강의 문의하기</strong>
+            <img src="./mobile/arrow-right.svg" alt="" />
+          </button>
+        </section>
+      </main>
 
       {isInquiryOpen && (
         <div
@@ -503,7 +442,7 @@ export default function Home() {
           >
             <div className="modal-header">
               <div>
-                <p className="section-kicker">LECTURE INQUIRY</p>
+                <p className="modal-kicker">LECTURE INQUIRY</p>
                 <h2 id="inquiry-title">강의 문의</h2>
               </div>
               <button
@@ -634,6 +573,7 @@ export default function Home() {
                     </select>
                   </label>
                 </div>
+
                 <label className="message-field">
                   <span>문의 내용 *</span>
                   <textarea
@@ -643,6 +583,7 @@ export default function Home() {
                     required
                   />
                 </label>
+
                 <label className="privacy-check">
                   <input type="checkbox" name="개인정보 수집 동의" required />
                   <span>
@@ -674,6 +615,6 @@ export default function Home() {
           </section>
         </div>
       )}
-    </main>
+    </>
   );
 }
