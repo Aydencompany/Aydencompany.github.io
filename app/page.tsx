@@ -376,6 +376,199 @@ export default function Home() {
         </section>
       </main>
 
+      <main className="desktop-page">
+        <header className="desktop-header">
+          <a className="desktop-brand" href="#desktop-top" aria-label="처음으로">
+            <span>ROOT</span>
+            <small>AI EDUCATION</small>
+          </a>
+          <nav aria-label="주요 메뉴">
+            <a href="#desktop-courses">교육 분야</a>
+            <a href="#desktop-programs">교육 프로그램</a>
+            <a href="#desktop-profile">강사 역량</a>
+          </nav>
+          <button type="button" onClick={openInquiry}>
+            강의 문의
+            <span aria-hidden="true">↗</span>
+          </button>
+        </header>
+
+        <section id="desktop-top" className="desktop-hero">
+          <div className="desktop-hero-copy">
+            <p className="desktop-kicker">JOB-CUSTOMIZED AI EDUCATION</p>
+            <h1>
+              생성형 AI를
+              <br />
+              실제 업무의 변화로 연결합니다.
+            </h1>
+            <p className="desktop-hero-description">
+              교육 대상의 직무와 실제 업무 환경을 분석하여 현장에서 바로
+              활용할 수 있는 AI·데이터 교육을 설계합니다.
+            </p>
+            <div className="desktop-tags">
+              <span>생성형 AI 업무 활용</span>
+              <span>AI·데이터 분석</span>
+              <span>바이브 코딩</span>
+              <span>문서·자료 활용</span>
+              <span>업무 자동화</span>
+            </div>
+            <button
+              className="desktop-primary-button"
+              type="button"
+              onClick={openInquiry}
+            >
+              강의 문의하기
+              <img src="./mobile/arrow-right.svg" alt="" />
+            </button>
+          </div>
+
+          <div className="desktop-hero-visual">
+            <img
+              className="desktop-hero-image"
+              src="./mobile/hero-main.webp"
+              alt="AI 실무 교육 강사 유재형"
+            />
+            <span className="desktop-tool desktop-tool-chatgpt">
+              <img src="./mobile/logo-chatgpt.png" alt="ChatGPT" />
+            </span>
+            <span className="desktop-tool desktop-tool-claude">
+              <img src="./mobile/logo-claude.png" alt="Claude" />
+            </span>
+            <span className="desktop-tool desktop-tool-gemini">
+              <img src="./mobile/logo-gemini.png" alt="Gemini" />
+            </span>
+            <div className="desktop-instructor-label">
+              <span>AI·데이터 실무교육</span>
+              <strong>유재형 강사</strong>
+            </div>
+          </div>
+        </section>
+
+        <section id="desktop-courses" className="desktop-section desktop-courses">
+          <div className="desktop-section-heading">
+            <div>
+              <p className="desktop-kicker">CORE CURRICULUM</p>
+              <h2>업무에 바로 적용하는 AI 교육</h2>
+            </div>
+            <p>
+              도구 사용법에 그치지 않고 실제 직무의 문제를 해결하는 방법을
+              교육합니다.
+            </p>
+          </div>
+          <div className="desktop-course-grid">
+            {courses.map((course, index) => (
+              <article className="desktop-course-card" key={course.title}>
+                <div className="desktop-course-image">
+                  <img src={course.image} alt={course.alt} />
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                </div>
+                <div className="desktop-course-copy">
+                  <h3>{course.title}</h3>
+                  <p>{course.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section
+          id="desktop-programs"
+          className="desktop-section desktop-programs"
+        >
+          <div className="desktop-program-intro">
+            <p className="desktop-kicker">CUSTOMIZED PROGRAM</p>
+            <h2>
+              조직과 직무에 맞춘
+              <br />
+              교육 프로그램
+            </h2>
+            <p>
+              교육 대상과 업무 환경, 활용 목적을 바탕으로 교육 내용과
+              실습의 깊이를 조정합니다.
+            </p>
+          </div>
+          <div className="desktop-program-grid">
+            {programs.map((program, index) => (
+              <article className="desktop-program-card" key={program.title}>
+                <div className="desktop-program-image">
+                  <img src={program.image} alt={program.alt} />
+                </div>
+                <div className="desktop-program-number">
+                  {String(index + 1).padStart(2, "0")}
+                </div>
+                <h3>{program.title}</h3>
+                <p>{program.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="desktop-profile" className="desktop-section desktop-profile">
+          <div className="desktop-section-heading desktop-profile-heading">
+            <div>
+              <p className="desktop-kicker">FIELD EXPERTISE</p>
+              <h2>
+                연구부터 현장 적용까지
+                <br />
+                경험한 실무형 강사
+              </h2>
+            </div>
+            <p>
+              기술 연구와 서비스 기획, 교육·의료 현장 경험을 바탕으로
+              이해하기 쉽고 적용 가능한 교육을 만듭니다.
+            </p>
+          </div>
+
+          <div className="desktop-profile-layout">
+            <div className="desktop-research">
+              <article>
+                <span>PATENT</span>
+                <h3>
+                  거대언어모델을 이용한 언어재활 업무지원 방법 및 시스템
+                </h3>
+                <p>특허 제10-2915253호 · 공동 발명</p>
+              </article>
+              <article>
+                <span>RESEARCH</span>
+                <h3>
+                  도메인 특화 RAG 기반 언어재활 목표·치료계획 생성 연구
+                </h3>
+                <p>Expert Systems with Applications 투고 연구 공동저자</p>
+              </article>
+            </div>
+            <div className="desktop-profile-cards">
+              {profileCards.map((card, index) => (
+                <article key={card.title}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <h3>{card.title}</h3>
+                  <ul>
+                    {card.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="desktop-contact">
+          <div>
+            <p className="desktop-kicker">LECTURE INQUIRY</p>
+            <h2>조직에 필요한 AI 교육을 함께 설계합니다.</h2>
+          </div>
+          <p>
+            교육 대상과 업무 환경, 원하는 교육 내용을 알려주시면
+            <br />
+            목적에 맞는 프로그램을 제안해 드립니다.
+          </p>
+          <button type="button" onClick={openInquiry}>
+            강의 문의하기
+            <img src="./mobile/arrow-right.svg" alt="" />
+          </button>
+        </section>
+      </main>
+
       {isInquiryOpen && (
         <div
           className="modal-backdrop"
