@@ -116,6 +116,9 @@ const expertise = [
 
 type FormStatus = "idle" | "sending" | "success" | "error";
 
+const FORM_ENDPOINT =
+  "https://formsubmit.co/ajax/d291a1a7144008f6c4518e695ac71860";
+
 export default function Home() {
   const [isInquiryOpen, setIsInquiryOpen] = useState(false);
   const [formStatus, setFormStatus] = useState<FormStatus>("idle");
@@ -156,22 +159,53 @@ export default function Home() {
     const formData = new FormData(form);
     if (formData.get("_honey")) return;
 
+    const fieldValue = (name: string, fallback = "미입력") => {
+      const value = formData.get(name);
+      return typeof value === "string" && value.trim() ? value.trim() : fallback;
+    };
+
+    const inquiryData = {
+      "기업·기관명": fieldValue("기업·기관명"),
+      담당자명: fieldValue("담당자명"),
+      연락처: fieldValue("연락처"),
+      email: fieldValue("email"),
+      "교육 대상·인원": fieldValue("교육 대상·인원"),
+      "희망 교육 주제": fieldValue("희망 교육 주제", "미정"),
+      "희망 일정": fieldValue("희망 일정", "미정"),
+      "교육 방식": fieldValue("교육 방식", "협의 필요"),
+      "문의 내용": fieldValue("문의 내용"),
+      "개인정보 수집 동의": formData.has("개인정보 수집 동의")
+        ? "동의함"
+        : "미동의",
+      _subject: "[ROOT 강의 문의] 새로운 문의가 도착했습니다",
+      _template: "table",
+      _captcha: "false",
+      _url: "https://aydencompany.github.io/",
+    };
+
     setFormStatus("sending");
     setFormMessage("");
 
     try {
-      const response = await fetch(
-        "https://formsubmit.co/ajax/wogud8221@gmail.com",
-        {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-          },
-          body: formData,
+      const response = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify(inquiryData),
+      });
 
-      if (!response.ok) throw new Error("Form submission failed");
+      const result = (await response.json()) as {
+        success?: boolean | string;
+        message?: string;
+      };
+      const wasSuccessful =
+        result.success === true || result.success === "true";
+
+      if (!response.ok || !wasSuccessful) {
+        throw new Error(result.message || "Form submission failed");
+      }
       form.reset();
       setFormStatus("success");
       setFormMessage(
@@ -493,7 +527,13 @@ export default function Home() {
                 </button>
               </div>
             ) : (
-              <form className="inquiry-form" onSubmit={handleSubmit}>
+              <form
+                className="inquiry-form"
+                action="https://formsubmit.co/d291a1a7144008f6c4518e695ac71860"
+                method="POST"
+                acceptCharset="UTF-8"
+                onSubmit={handleSubmit}
+              >
                 <input
                   className="honeypot"
                   type="text"
@@ -509,6 +549,11 @@ export default function Home() {
                 />
                 <input type="hidden" name="_template" value="table" />
                 <input type="hidden" name="_captcha" value="false" />
+                <input
+                  type="hidden"
+                  name="_url"
+                  value="https://aydencompany.github.io/"
+                />
 
                 <div className="form-grid">
                   <label>
