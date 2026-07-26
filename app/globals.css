@@ -1008,9 +1008,8 @@ img {
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center bottom;
-    transform: scale(1.03);
+    object-fit: contain;
+    object-position: center;
   }
 
   .desktop-tool {
@@ -1147,12 +1146,7 @@ img {
   .desktop-course-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: transform 300ms ease;
-  }
-
-  .desktop-course-card:hover .desktop-course-image img {
-    transform: scale(1.025);
+    object-fit: contain;
   }
 
   .desktop-course-image span {
