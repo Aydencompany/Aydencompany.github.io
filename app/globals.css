@@ -1283,19 +1283,11 @@ img {
     color: var(--white);
   }
 
-  .desktop-research article:nth-child(2) {
-    background: #849b93;
-  }
-
   .desktop-research span {
     color: var(--lime);
     font-size: 10px;
     font-weight: 800;
     letter-spacing: 0.15em;
-  }
-
-  .desktop-research article:nth-child(2) span {
-    color: var(--white);
   }
 
   .desktop-research h3 {
